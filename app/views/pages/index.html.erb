@@ -1,0 +1,254 @@
+
+  
+   
+      
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Welcome To My Portfolio!</div>
+                <div class="masthead-heading text-uppercase">Ruby on rails full stack developer!</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#skills">Tell Me More</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="skills">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Skills</h2>
+                    
+                </div>
+                <div class="row text-center">
+                	<% @skills.each do |skill| %>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x"><i class="fas fa-circle fa-stack-2x text-primary"></i><i class="<%= skill.logo %> fa-stack-1x fa-inverse"></i></span>
+                        <h4 class="my-3"><%= skill.title %></h4>
+                        <p class="text-muted"><%= skill.description %></p>
+                    </div>
+                   <% end %>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Portfolio</h2>
+                    
+                </div>
+                <div class="row">
+                	<% @items.each do |item| %>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#<%= item.image %>"
+                                ><div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                 <%= image_tag "portfolio/#{item.image}", class: 'img-fluid' %> 
+                               </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"><%= item.name %></div>
+                                <div class="portfolio-caption-subheading text-muted"><%= item.category %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </section>
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Educational Journey</h2>
+                    
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><%= image_tag 'about/1', class: 'rounded-circle img-fluid' %> </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2010-2013</h4>
+                                <h4 class="subheading">Bsc Software Engineering</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">I did my Bachelors in software engineering from Riphah International University Pakistan. Thats where my interest in Web development started and I started looking into the Web Programming Languages!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><%= image_tag 'about/2', class: 'rounded-circle img-fluid' %></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>September 2017</h4>
+                                <h4 class="subheading">Msc Adv-Comp Science</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">After getting accepted for the Msc I landed in the UK and started to persue my ambition and give boost to my career in Web Development.</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><%= image_tag 'about/3', class: 'rounded-circle img-fluid' %></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>July 2018</h4>
+                                <h4 class="subheading">Studio 116</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">I joined a small web development company called Studio 116 in order to gain some field experience in web development. I worked on one of their on going Php project using Wordpress. </p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><%= image_tag 'about/4', class: 'rounded-circle img-fluid' %></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>February 2019</h4>
+                                <h4 class="subheading">Ruby on Rails Freelancer</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">After learning basics of Ruby on Rails I started to work on freelancing projects in order to gain in-depth knowledge of ROR and I am still working as Freelancer. </p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>Be Part<br />Of My<br />Story!</h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Team-->
+        <section class="page-section bg-light" id="author">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Author</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="team-member">
+                        	<%= image_tag 'team/cover', class: 'mx-auto rounded-circle' %>
+                       
+                            <h4>Nadir Khan</h4>
+                            <p class="text-muted">Ful Stack ROR Developer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/NadirKh49982607"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/NAdir.KHan.546"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/nadir-khan-785a9b170/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">A creative and very passionate Ruby on Rails developer with experience in a variety of exciting projects. A level head and rational approach to problem solving combined with a passion for innovative and fresh ideas has led to a
+                    portfolio of impressive website solutions. Technically competent and industry aware means that each project
+                    is undertaken with the most up-to-date and relevant programming foundations available.</p></div>
+                </div>
+            </div>
+        </section>
+       
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Contact Info</h2>
+                    
+                </div>
+
+                 <div class="text-center">
+                    <h3 class="section-heading text-uppercase">Nadirkhann487@gmail.com</h2>
+                    
+                </div>
+                
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-left">Copyright © Your Website 2020</div>
+                    
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals--><!-- Modal 1-->
+        <div class="portfolio-modal modal fade" id="<%= @item1.image %>" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><%= image_tag 'close-icon' %></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase"><%= @item1.name %></h2>
+                                    <p class="item-intro text-muted"><%= @item1.language %></p>
+                                    <div class="row">
+					                	
+					                    <div class="col-lg-4 col-sm-6 mb-4">
+											<%= image_tag 'portfolio/blog01', class: 'img-fluid d-block mx-auto' %>
+		                                              
+					                    </div>
+					                     <div class="col-lg-4 col-sm-6 mb-4">
+											<%= image_tag 'portfolio/blog02', class: 'img-fluid d-block mx-auto' %>
+		                                              
+					                    </div>
+					                     <div class="col-lg-4 col-sm-6 mb-4">
+											<%= image_tag 'portfolio/blog03', class: 'img-fluid d-block mx-auto' %>
+		                                              
+					                    </div>
+					                    
+					                   
+					                </div>                       
+                                    <p><%= @item1.description %></p>
+                                    <ul class="list-inline">
+                                        <li>Client: <%= @item1.client %></li>
+                                        <li>Category: <%= @item1.category %></li>
+                                        <li>Git URL: <%= link_to  "#{@item1.URL}", @item1.URL %></li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close Project</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="portfolio-modal modal fade" id="<%= @item2.image %>"  tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><%= image_tag 'close-icon' %></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase"><%= @item2.name %></h2>
+                                    <p class="item-intro text-muted"><%= @item2.language %></p>
+                                    <div class="row">
+					                	
+					                    <div class="col-lg-4 col-sm-6 mb-4">
+											<%= image_tag 'portfolio/shop01', class: 'img-fluid d-block mx-auto' %>
+		                                              
+					                    </div>
+					                     <div class="col-lg-4 col-sm-6 mb-4">
+											<%= image_tag 'portfolio/shop02', class: 'img-fluid d-block mx-auto' %>
+		                                              
+					                    </div>
+					                     <div class="col-lg-4 col-sm-6 mb-4">
+											<%= image_tag 'portfolio/shop03', class: 'img-fluid d-block mx-auto' %>
+		                                              
+					                    </div>
+					                    
+					                   
+					                </div>                       
+                                    <p><%= @item2.description %></p>
+                                    <ul class="list-inline">
+                                        <li>Client: <%= @item2.client %></li>
+                                        <li>Category: <%= @item2.category %></li>
+                                        <li>Git URL: <%= link_to  "#{@item2.URL}", @item1.URL %></li>
+                                    </ul>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close Project</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       
+  
+  
+    </body>
+</html>
