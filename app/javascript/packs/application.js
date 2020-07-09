@@ -10,6 +10,7 @@ require("channels")
 require("scripts.js")
 import "bootstrap";
 
+
 global.$ = jQuery;
 
  
