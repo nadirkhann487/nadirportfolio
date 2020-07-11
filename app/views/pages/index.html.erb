@@ -39,11 +39,53 @@
                                 ><div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                 <%= image_tag "portfolio/#{item.image}", class: 'img-fluid' %> 
+                                 <%= image_tag "portfolio/1#{item.image}", class: 'img-fluid' %> 
                                </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading"><%= item.name %></div>
                                 <div class="portfolio-caption-subheading text-muted"><%= item.category %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-modal modal fade" id="<%= item.image %>" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="close-modal" data-dismiss="modal"><%= image_tag 'close-icon.svg' %></div>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-8">
+                                            <div class="modal-body">
+                                                <!-- Project Details Go Here-->
+                                                <h2 class="text-uppercase"><%= item.name %></h2>
+                                                <p class="item-intro text-muted"><%= item.language %></p>
+                                                <div class="row">
+                                                    
+                                                    <div class="col-lg-4 col-sm-6 mb-4">
+                                                        <%= image_tag "portfolio/1#{item.image}.jpg", class: 'img-fluid d-block mx-auto' %>
+                                                                  
+                                                    </div>
+                                                     <div class="col-lg-4 col-sm-6 mb-4">
+                                                        <%= image_tag "portfolio/2#{item.image}.jpg", class: 'img-fluid d-block mx-auto' %>
+                                                                  
+                                                    </div>
+                                                     <div class="col-lg-4 col-sm-6 mb-4">
+                                                        <%= image_tag "portfolio/3#{item.image}.jpg", class: 'img-fluid d-block mx-auto' %>
+                                                                  
+                                                    </div>
+                                                    
+                                                   
+                                                </div>                       
+                                                <p><%= item.description %></p>
+                                                <ul class="list-inline">
+                                                    <li>Client: <%= item.client %></li>
+                                                    <li>Category: <%= item.category %></li>
+                                                    <li>Git URL: <%= link_to  "#{item.URL}", item.URL %></li>
+                                                </ul>
+                                                <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close Project</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,91 +200,7 @@
             </div>
         </footer>
         <!-- Portfolio Modals--><!-- Modal 1-->
-        <div class="portfolio-modal modal fade" id="<%= @item1.image %>" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><%= image_tag 'close-icon.svg' %></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase"><%= @item1.name %></h2>
-                                    <p class="item-intro text-muted"><%= @item1.language %></p>
-                                    <div class="row">
-					                	
-					                    <div class="col-lg-4 col-sm-6 mb-4">
-											<%= image_tag 'portfolio/blog01.jpg', class: 'img-fluid d-block mx-auto' %>
-		                                              
-					                    </div>
-					                     <div class="col-lg-4 col-sm-6 mb-4">
-											<%= image_tag 'portfolio/blog02.jpg', class: 'img-fluid d-block mx-auto' %>
-		                                              
-					                    </div>
-					                     <div class="col-lg-4 col-sm-6 mb-4">
-											<%= image_tag 'portfolio/blog03.jpg', class: 'img-fluid d-block mx-auto' %>
-		                                              
-					                    </div>
-					                    
-					                   
-					                </div>                       
-                                    <p><%= @item1.description %></p>
-                                    <ul class="list-inline">
-                                        <li>Client: <%= @item1.client %></li>
-                                        <li>Category: <%= @item1.category %></li>
-                                        <li>Git URL: <%= link_to  "#{@item1.URL}", @item1.URL %></li>
-                                    </ul>
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close Project</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-         <div class="portfolio-modal modal fade" id="<%= @item2.image %>"  tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><%= image_tag 'close-icon.svg' %></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase"><%= @item2.name %></h2>
-                                    <p class="item-intro text-muted"><%= @item2.language %></p>
-                                    <div class="row">
-					                	
-					                    <div class="col-lg-4 col-sm-6 mb-4">
-											<%= image_tag 'portfolio/shop01.jpg', class: 'img-fluid d-block mx-auto' %>
-		                                              
-					                    </div>
-					                     <div class="col-lg-4 col-sm-6 mb-4">
-											<%= image_tag 'portfolio/shop02.jpg', class: 'img-fluid d-block mx-auto' %>
-		                                              
-					                    </div>
-					                     <div class="col-lg-4 col-sm-6 mb-4">
-											<%= image_tag 'portfolio/shop03.jpg', class: 'img-fluid d-block mx-auto' %>
-		                                              
-					                    </div>
-					                    
-					                   
-					                </div>                       
-                                    <p><%= @item2.description %></p>
-                                    <ul class="list-inline">
-                                        <li>Client: <%= @item2.client %></li>
-                                        <li>Category: <%= @item2.category %></li>
-                                        <li>Git URL: <%= link_to  "#{@item2.URL}", @item1.URL %></li>
-                                    </ul>
-                                    <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close Project</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
        
        
   
