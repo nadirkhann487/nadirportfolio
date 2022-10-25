@@ -1,5 +1,6 @@
-ActiveAdmin.register PortfolioItem do
+# frozen_string_literal: true
 
+ActiveAdmin.register PortfolioItem do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,7 +15,6 @@ ActiveAdmin.register PortfolioItem do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
-      permit_params :name,:description,:category,:language,:client,:URL,:image
 
+  permit_params :name, :description, :category, :language, :client, :URL, :image
 end

@@ -1,5 +1,6 @@
-ActiveAdmin.register Skill do
+# frozen_string_literal: true
 
+ActiveAdmin.register Skill do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -15,6 +16,5 @@ ActiveAdmin.register Skill do
   #   permitted
   # end
 
-    permit_params :title,:description,:logo
-
+  permit_params :title, :description, :logo
 end
