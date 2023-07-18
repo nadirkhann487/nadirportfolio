@@ -65,7 +65,7 @@ RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
 
 COPY --from=gems /app /app
 COPY package*json yarn.* ./
-RUN yarn install --check-files
+RUN yarn install
 
 # NEW STAGE FOR DATABASE
 FROM node as database
