@@ -81,5 +81,5 @@ test:
 #
 production:
   <<: *default
-  username: PortfolioApp
-  password: <%= ENV['PORTFOLIOAPP_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: Rukhm@93

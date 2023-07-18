@@ -3,7 +3,7 @@ ARG RUBY_VERSION=2.7.0
 ARG VARIANT=jemalloc-slim
 FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
-ARG NODE_VERSION=18
+ARG NODE_VERSION=14
 ARG BUNDLER_VERSION=2.3.9
 
 ARG RAILS_ENV=production
@@ -29,7 +29,7 @@ ENV BASH_ENV ~/.bashrc
 ENV VOLTA_HOME /root/.volta
 ENV PATH $VOLTA_HOME/bin:/usr/local/bin:$PATH
 
-RUN volta install node@${NODE_VERSION} && volta install yarn
+RUN volta install node@${NODE_VERSION} && volta install yarn@1.22.19
 
 FROM base as build_deps
 
@@ -63,19 +63,37 @@ RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     ${PROD_PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Install Python 3
+RUN apt-get update && apt-get install -y python2
+
 COPY --from=gems /app /app
 COPY package*json yarn.* ./
-RUN yarn install
+# Manually remove node-sass package
+RUN rm -rf node_modules/node-sass
 
-# NEW STAGE FOR DATABASE
-FROM node as database
+# Install sass and other dependencies
+RUN yarn add sass && yarn install
+
+# NEW STAGE FOR DATABASE RESTORATION
+FROM node as db_restoration
+
+# Install PostgreSQL client
+ARG PROD_PACKAGES="postgresql-client"
+ENV PROD_PACKAGES=${PROD_PACKAGES}
+
+RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
+    --mount=type=cache,id=prod-apt-lib,sharing=locked,target=/var/lib/apt \
+    apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+    ${PROD_PACKAGES} \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy the database dump file into the image
 COPY latest.dump /app/latest.dump
 
-# Import the database dump into the database
-RUN bundle exec rake db:create
-RUN bundle exec rake db:pg_restore latest.dump
+# Restore the database using the latest.dump file
+RUN bundle exec rake db:create && \
+    bundle exec rake db:pg_restore latest.dump
 
 # CONTINUE WITH THE REST OF THE DOCKERFILE
 COPY . .
